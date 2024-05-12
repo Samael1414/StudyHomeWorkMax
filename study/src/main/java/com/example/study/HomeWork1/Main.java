@@ -2,12 +2,12 @@ package com.example.study.HomeWork1;
 
 import java.util.Scanner;
 
-// Цикл for:
-//   Напишите программу, которая просит пользователя ввести количество чисел для ввода. Затем, используя цикл for, \
-//   программа должна принимать числа от пользователя и выводить их сумму.
+// Цикл for-each:
+//   Создайте программу, которая запрашивает у пользователя размер массива, а затем элементы массива.
+//   Используя цикл for-each, программа должна вычислить и вывести среднее значение всех элементов массива.
 public class Main {
     public static void main(String[] args) {
-        cycle();
+        averageValue();
     }
 
     public static void cycle() {
@@ -27,6 +27,33 @@ public class Main {
                 sum += numbers[i];
             }
             System.out.println("Сумма ваших чисел = " + sum);
+        }
+        scanner.close();
+    }
+
+    public static void averageValue() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите размер массива");
+        if (scanner.hasNextInt()) {
+            int size = scanner.nextInt();
+            int[] arrayValue = new int[size];
+            System.out.println("Введите элементы массива");
+
+            for (int i = 0; i < arrayValue.length; i++) {
+                if (scanner.hasNextInt()) {
+                    arrayValue[i] = scanner.nextInt();
+                } else {
+                    System.out.println("Мне нужны цифры, а не вот это все!");
+                }
+            }
+            int value = 0;
+            int quantity = 0;
+            for (int number : arrayValue) {
+                value += number;
+                quantity++;
+            }
+            double average = value / quantity;
+            System.out.println("Среднее число массива: " + average);
         }
         scanner.close();
     }
