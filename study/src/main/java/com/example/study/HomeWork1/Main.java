@@ -7,7 +7,7 @@ import java.util.Scanner;
 //   Используя цикл for-each, программа должна вычислить и вывести среднее значение всех элементов массива.
 public class Main {
     public static void main(String[] args) {
-        averageValue();
+        nonStandardStep();
     }
 
     public static void cycle() {
@@ -55,6 +55,30 @@ public class Main {
             double average = value / quantity;
             System.out.println("Среднее число массива: " + average);
         }
+        scanner.close();
+    }
+
+    //Цикл for с шагом:
+    //   Напишите программу, которая использует цикл for с нестандартным шагом. Программа должна запрашивать
+    //   начальное значение, конечное значение и шаг, затем выводить каждое `n`-ое число в этом диапазоне.
+
+    public static void nonStandardStep() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите начальное значение: ");
+        if (scanner.hasNextInt()) {
+            int seedNumber = scanner.nextInt();
+            System.out.println("Введите конечное значение: ");
+            int finalNumber = scanner.nextInt();
+            System.out.println("Введите шаг: " + " ps: Только положительное число");
+            int step = scanner.nextInt();
+            if (step <= 0){
+                System.out.println("Ты все сломал, давай по новой!");
+                return;
+            }
+            for (int i = seedNumber; i <= finalNumber ; i+= step) {
+                System.out.println(i);
+            }
+        } else System.out.println("Нужны только цифры и ничего иного");
         scanner.close();
     }
 }
