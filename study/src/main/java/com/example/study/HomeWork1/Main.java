@@ -7,13 +7,21 @@ import java.util.Scanner;
 //   Используя цикл for-each, программа должна вычислить и вывести среднее значение всех элементов массива.
 public class Main {
     public static void main(String[] args) {
-        nonStandardStep();
+        cycle();
     }
+
+
+    // 1. раз уж начал то напиши перед каждым решением задачи их условия. и на следующих задачах делай так же.
+    // 2. создай Enum с перечислениями всех сообщений которые ты используешь в System.out.println и используй их в выводе в консоль. Пример: HOW_MANY_NUMBER("Сколько чисел вы хотите ввести?")
+    //    и тд. это хорошая практика не хардкодить текст ошибок и пр текстов а заносить их в enum для последующего использования. Как раз практика Enum будет.
+    // 3. проверил первую задачу у себя локально, перепроверь тоже как выполняется программа!
 
     public static void cycle() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Сколько чисел вы хотите ввести?");
         if (scanner.hasNextInt()) {
+            // 3.1 условие не отрабатывает, если тут ввести буквы то ничего не происходит. проверь каждую из задач, if отрабатывает один раз
+            // а должно быть пока не введешь число должно выкидывать сообщение что нужно вводить только число
             int number = scanner.nextInt();
             int[] numbers = new int[number];
             System.out.println("Какие числа вы хотите ввести?");
@@ -35,6 +43,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите размер массива");
         if (scanner.hasNextInt()) {
+            // 3.2 тут тоже самое
             int size = scanner.nextInt();
             int[] arrayValue = new int[size];
             System.out.println("Введите элементы массива");
@@ -66,6 +75,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите начальное значение: ");
         if (scanner.hasNextInt()) {
+            // 3.3 тут та же штука
             int seedNumber = scanner.nextInt();
             System.out.println("Введите конечное значение: ");
             int finalNumber = scanner.nextInt();
@@ -73,6 +83,7 @@ public class Main {
             int step = scanner.nextInt();
             if (step <= 0){
                 System.out.println("Ты все сломал, давай по новой!");
+                // тут ухаха
                 return;
             }
             for (int i = seedNumber; i <= finalNumber ; i+= step) {
