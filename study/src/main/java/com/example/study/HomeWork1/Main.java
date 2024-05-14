@@ -2,35 +2,42 @@ package com.example.study.HomeWork1;
 
 import java.util.Scanner;
 
-// Цикл for-each:
-//   Создайте программу, которая запрашивает у пользователя размер массива, а затем элементы массива.
-//   Используя цикл for-each, программа должна вычислить и вывести среднее значение всех элементов массива.
+// 1. Цикл for:
+//   Напишите программу, которая просит пользователя ввести количество чисел для ввода. Затем, используя цикл for,
+//   программа должна принимать числа от пользователя и выводить их сумму.
 public class Main {
     public static void main(String[] args) {
-        nonStandardStep();
+        cycle();
     }
 
     public static void cycle() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Сколько чисел вы хотите ввести?");
-        if (scanner.hasNextInt()) {
-            int number = scanner.nextInt();
-            int[] numbers = new int[number];
-            System.out.println("Какие числа вы хотите ввести?");
-            for (int i = 0; i < numbers.length; i++) {
-                if (scanner.hasNextInt()) {
-                    numbers[i] = scanner.nextInt();
-                } else System.out.println("Вводите именно числа!");
-            }
-            int sum = 0;
-            for (int i = 0; i < numbers.length; i++) {
-                sum += numbers[i];
-            }
-            System.out.println("Сумма ваших чисел = " + sum);
+        System.out.println(Messages.HOW_MANY_NUMBER.getMessage());
+        int number = 0;
+        while (!scanner.hasNextInt()) {
+            System.out.println(Messages.getInvalidInputMessage());
+            scanner.nextLine();
         }
+        number = scanner.nextInt();
+        int sum = 0;
+        for (int i = 0; i < number; i++) {
+            System.out.println(Messages.WHAT_NUMBERS.getMessage());
+            if (!scanner.hasNextInt()) {
+                System.out.println(Messages.getInvalidInputMessage());
+                scanner.nextLine();
+                continue;
+            }
+            int num = scanner.nextInt();
+            sum += num;
+        }
+        System.out.println(sum);
+
         scanner.close();
     }
 
+    // Цикл for-each:
+    //   Создайте программу, которая запрашивает у пользователя размер массива, а затем элементы массива.
+    //   Используя цикл for-each, программа должна вычислить и вывести среднее значение всех элементов массива.
     public static void averageValue() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите размер массива");
@@ -71,11 +78,11 @@ public class Main {
             int finalNumber = scanner.nextInt();
             System.out.println("Введите шаг: " + " ps: Только положительное число");
             int step = scanner.nextInt();
-            if (step <= 0){
+            if (step <= 0) {
                 System.out.println("Ты все сломал, давай по новой!");
                 return;
             }
-            for (int i = seedNumber; i <= finalNumber ; i+= step) {
+            for (int i = seedNumber; i <= finalNumber; i += step) {
                 System.out.println(i);
             }
         } else System.out.println("Нужны только цифры и ничего иного");
