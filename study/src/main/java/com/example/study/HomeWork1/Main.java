@@ -7,7 +7,7 @@ import java.util.Scanner;
 //   программа должна принимать числа от пользователя и выводить их сумму.
 public class Main {
     public static void main(String[] args) {
-        nonStandardStep();
+        nestedPool();
     }
 
     public static void cycle() {
@@ -101,6 +101,34 @@ public class Main {
             System.out.println(i);
         }
 
+        scanner.close();
+    }
+
+    //4. Вложенные циклы for:
+    //   Разработайте программу, которая использует вложенные циклы for для создания таблицы умножения
+    //   заданного размера. Пользователь должен ввести размер таблицы, а программа должна выводить
+    //   таблицу умножения для чисел от 1 до введенного числа.
+    public static void nestedPool() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(Messages.ENTER_ARRAY_SIZE.getMessage());
+
+        while (!scanner.hasNextInt()) {
+            System.out.println(Messages.getInvalidInputMessage());
+            scanner.nextLine();
+        }
+        int size = scanner.nextInt();
+        int[][] arr = new int[size][size];
+        for (int i = 0; i < size ; i++) {
+            for (int j = 0; j < size ; j++) {
+                arr[i][j] = (i + 1) * (j +1);
+            }
+        }
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
         scanner.close();
     }
 }
