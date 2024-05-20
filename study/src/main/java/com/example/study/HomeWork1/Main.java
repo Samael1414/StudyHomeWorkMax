@@ -6,19 +6,18 @@ import java.util.Scanner;
 //   Напишите программу, которая просит пользователя ввести количество чисел для ввода. Затем, используя цикл for,
 //   программа должна принимать числа от пользователя и выводить их сумму.
 public class Main {
+    static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        nestedPool();
+     cycle();
     }
 
     public static void cycle() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println(Messages.HOW_MANY_NUMBER.getMessage());
-        int number = 0;
         while (!scanner.hasNextInt()) {
             System.out.println(Messages.getInvalidInputMessage());
             scanner.nextLine();
         }
-        number = scanner.nextInt();
+        int number = scanner.nextInt();
         int sum = 0;
         for (int i = 0; i < number; i++) {
             System.out.println(Messages.WHAT_NUMBERS.getMessage());
@@ -39,7 +38,6 @@ public class Main {
     //   Создайте программу, которая запрашивает у пользователя размер массива, а затем элементы массива.
     //   Используя цикл for-each, программа должна вычислить и вывести среднее значение всех элементов массива.
     public static void averageValue() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println(Messages.ENTER_ARRAY_SIZE.getMessage());
         while (!scanner.hasNextInt()) {
             System.out.println(Messages.getInvalidInputMessage());
@@ -73,7 +71,6 @@ public class Main {
     //   начальное значение, конечное значение и шаг, затем выводить каждое `n`-ое число в этом диапазоне.
 
     public static void nonStandardStep() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println(Messages.ENTER_STARTING.getMessage());
         while (!scanner.hasNextInt()) {
             System.out.println(Messages.getInvalidInputMessage());
@@ -109,7 +106,6 @@ public class Main {
     //   заданного размера. Пользователь должен ввести размер таблицы, а программа должна выводить
     //   таблицу умножения для чисел от 1 до введенного числа.
     public static void nestedPool() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println(Messages.ENTER_ARRAY_SIZE.getMessage());
 
         while (!scanner.hasNextInt()) {
