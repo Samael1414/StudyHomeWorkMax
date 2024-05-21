@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-     cycle();
+        averageValue();
     }
 
     public static void cycle() {
@@ -56,10 +56,13 @@ public class Main {
             }
             double value = 0;
             double quantity = 0;
+            // quantity лишняя переменная
             for (int number : arrayValue) {
                 value += number;
                 quantity++;
+                //тут тоже лишняя нагрузка на приложение, зачем считать количество символов если тебе это значение известно с самого начала в переменной size
             }
+        // соотвктственно тут можно поделить на size и будет тот же результат
             double average = value / quantity;
             System.out.println(Messages.ARRAY_AVERAGE.getMessage() + average);
 
