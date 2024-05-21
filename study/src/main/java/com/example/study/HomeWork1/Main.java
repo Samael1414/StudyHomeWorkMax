@@ -1,5 +1,6 @@
 package com.example.study.HomeWork1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 // 1. Цикл for:
@@ -7,14 +8,15 @@ import java.util.Scanner;
 //   программа должна принимать числа от пользователя и выводить их сумму.
 public class Main {
     static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-     cycle();
+        cycle();
     }
 
     public static void cycle() {
         System.out.println(Messages.HOW_MANY_NUMBER.getMessage());
         while (!scanner.hasNextInt()) {
-            System.out.println(Messages.getInvalidInputMessage());
+            System.out.println(Messages.INVALID_INPUT_MESSAGE.getMessage());
             scanner.nextLine();
         }
         int number = scanner.nextInt();
@@ -22,8 +24,8 @@ public class Main {
         for (int i = 0; i < number; i++) {
             System.out.println(Messages.WHAT_NUMBERS.getMessage());
             if (!scanner.hasNextInt()) {
-                System.out.println(Messages.getInvalidInputMessage());
-                scanner.nextLine();
+                System.out.println(Messages.INVALID_INPUT_MESSAGE.getMessage());
+                scanner.next();
                 continue;
             }
             int num = scanner.nextInt();
@@ -39,29 +41,41 @@ public class Main {
     //   Используя цикл for-each, программа должна вычислить и вывести среднее значение всех элементов массива.
     public static void averageValue() {
         System.out.println(Messages.ENTER_ARRAY_SIZE.getMessage());
-        while (!scanner.hasNextInt()) {
-            System.out.println(Messages.getInvalidInputMessage());
-            scanner.nextLine();
+        int size;
+        while (true) {
+            if (!scanner.hasNextInt()) {
+                System.out.println(Messages.INVALID_INPUT_MESSAGE.getMessage());
+                scanner.next();
+                continue;
+            }
+            size = scanner.nextInt();
+            if (size > 0) {
+                break;
+            } else {
+                System.out.println(Messages.ARRAY_SIZE_MUST.getMessage());
+            }
         }
-            int size = scanner.nextInt();
-            int[] arrayValue = new int[size];
-            System.out.println(Messages.ENTER_ARRAY_ELEMENTS.getMessage());
+        int[] arrayValue = new int[size];
+        System.out.println(Arrays.toString(arrayValue));
+        System.out.println(Messages.ENTER_ARRAY_ELEMENTS.getMessage());
+        boolean firstInvalid = true;
 
-            for (int i = 0; i < arrayValue.length; i++) {
-                while (!scanner.hasNextInt()) {
-                    System.out.println(Messages.getInvalidInputMessage());
-                    scanner.nextLine();
-                }
-                arrayValue[i] = scanner.nextInt();
+        for (int i = 0; i < arrayValue.length; i++) {
+            while (!scanner.hasNextInt()) {
+                if (firstInvalid) System.out.println(Messages.INVALID_INPUT_MESSAGE.getMessage());
+                scanner.next();
+                firstInvalid = false;
+
             }
-            double value = 0;
-            double quantity = 0;
-            for (int number : arrayValue) {
-                value += number;
-                quantity++;
-            }
-            double average = value / quantity;
-            System.out.println(Messages.ARRAY_AVERAGE.getMessage() + average);
+            arrayValue[i] = scanner.nextInt();
+            firstInvalid = true;
+        }
+        double value = 0;
+        for (int number : arrayValue) {
+            value += number;
+        }
+        double average = value / size;
+        System.out.println(Messages.ARRAY_AVERAGE.getMessage() + average);
 
         scanner.close();
     }
@@ -73,25 +87,25 @@ public class Main {
     public static void nonStandardStep() {
         System.out.println(Messages.ENTER_STARTING.getMessage());
         while (!scanner.hasNextInt()) {
-            System.out.println(Messages.getInvalidInputMessage());
-            scanner.nextLine();
+            System.out.println(Messages.INVALID_INPUT_MESSAGE.getMessage());
+            scanner.next();
         }
         int seedNumber = scanner.nextInt();
         System.out.println(Messages.ENTER_FINAL.getMessage());
         while (!scanner.hasNextInt()) {
-            System.out.println(Messages.getInvalidInputMessage());
-            scanner.nextLine();
+            System.out.println(Messages.INVALID_INPUT_MESSAGE.getMessage());
+            scanner.next();
         }
         int finalNumber = scanner.nextInt();
         System.out.println(Messages.ENTER_STEP.getMessage());
         while (!scanner.hasNextInt()) {
-            System.out.println(Messages.getInvalidInputMessage());
-            scanner.nextLine();
+            System.out.println(Messages.INVALID_INPUT_MESSAGE.getMessage());
+            scanner.next();
         }
         int step = scanner.nextInt();
         while (step <= 0) {
             System.out.println(Messages.NEGATIVE_NUMBER_ERROR.getMessage());
-            scanner.nextLine();
+            scanner.next();
             step = scanner.nextInt();
         }
         for (int i = seedNumber; i <= finalNumber; i += step) {
@@ -109,7 +123,7 @@ public class Main {
         System.out.println(Messages.ENTER_ARRAY_SIZE.getMessage());
 
         while (!scanner.hasNextInt()) {
-            System.out.println(Messages.getInvalidInputMessage());
+            System.out.println(Messages.INVALID_INPUT_MESSAGE.getMessage());
             scanner.nextLine();
         }
         int size = scanner.nextInt();

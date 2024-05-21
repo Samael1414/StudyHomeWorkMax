@@ -9,10 +9,12 @@ public enum Messages {
     ENTER_STARTING("Введите начальное значение"),
     ENTER_FINAL("Введите конечное значение"),
     ENTER_STEP("Введите шаг"),
-    NEGATIVE_NUMBER_ERROR("Нужно положительное число");
+    NEGATIVE_NUMBER_ERROR("Нужно положительное число"),
+    INVALID_INPUT_MESSAGE("Необходимо ввести целое число!"),
+    ARRAY_SIZE_MUST("Размер массива должен быть положительным");
 
     private final String message;
-    private static final String INVALID_INPUT_MESSAGE = "Необходимо ввести целое число!";
+
 
 
     Messages(String message) {
@@ -21,9 +23,5 @@ public enum Messages {
 
     public String getMessage() {
         return message;
-    }
-
-    public static String getInvalidInputMessage() {
-        return INVALID_INPUT_MESSAGE;
     }
 }
