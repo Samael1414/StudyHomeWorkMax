@@ -11,7 +11,8 @@ public enum Messages {
     ENTER_STEP("Введите шаг"),
     NEGATIVE_NUMBER_ERROR("Нужно положительное число"),
     INVALID_INPUT_MESSAGE("Необходимо ввести целое число!"),
-    ARRAY_SIZE_MUST("Размер массива должен быть положительным");
+    ARRAY_SIZE_MUST("Размер массива должен быть положительным"),
+    NUMBER("Введите число");
 
     private final String message;
 

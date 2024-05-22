@@ -10,25 +10,27 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        cycle();
+        nestedPool();
     }
 
     public static void cycle() {
         System.out.println(Messages.HOW_MANY_NUMBER.getMessage());
         while (!scanner.hasNextInt()) {
             System.out.println(Messages.INVALID_INPUT_MESSAGE.getMessage());
-            scanner.nextLine();
+            scanner.next();
         }
         int number = scanner.nextInt();
         int sum = 0;
+        boolean firsInvalid = true;
         for (int i = 0; i < number; i++) {
             System.out.println(Messages.WHAT_NUMBERS.getMessage());
-            if (!scanner.hasNextInt()) {
-                System.out.println(Messages.INVALID_INPUT_MESSAGE.getMessage());
+            while (!scanner.hasNextInt()) {
+                if (firsInvalid) System.out.println(Messages.INVALID_INPUT_MESSAGE.getMessage());
                 scanner.next();
-                continue;
+                firsInvalid = false;
             }
             int num = scanner.nextInt();
+            firsInvalid = true;
             sum += num;
         }
         System.out.println(sum);
@@ -105,8 +107,12 @@ public class Main {
         int step = scanner.nextInt();
         while (step <= 0) {
             System.out.println(Messages.NEGATIVE_NUMBER_ERROR.getMessage());
-            scanner.next();
-            step = scanner.nextInt();
+            scanner.hasNextInt();
+            if (scanner.hasNextInt()){
+                step = scanner.nextInt();
+            } else {
+                scanner.next();
+            }
         }
         for (int i = seedNumber; i <= finalNumber; i += step) {
             System.out.println(i);
@@ -120,25 +126,30 @@ public class Main {
     //   заданного размера. Пользователь должен ввести размер таблицы, а программа должна выводить
     //   таблицу умножения для чисел от 1 до введенного числа.
     public static void nestedPool() {
-        System.out.println(Messages.ENTER_ARRAY_SIZE.getMessage());
+        System.out.println(Messages.NUMBER.getMessage());
 
         while (!scanner.hasNextInt()) {
             System.out.println(Messages.INVALID_INPUT_MESSAGE.getMessage());
-            scanner.nextLine();
+            scanner.next();
         }
         int size = scanner.nextInt();
-        int[][] arr = new int[size][size];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                arr[i][j] = (i + 1) * (j + 1);
+        while (size <= 0) {
+            System.out.println(Messages.NEGATIVE_NUMBER_ERROR.getMessage());
+            scanner.hasNextInt();
+            if (scanner.hasNextInt()) {
+                size = scanner.nextInt();
+            } else {
+                scanner.next();
             }
         }
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                System.out.print(arr[i][j] + " ");
+            for (int i = 1; i <= size; i++) {
+                for (int j = 1; j <= 10; j++) {
+                    System.out.println(i + "*" + j + "=" + (i * j));
+                }
+                System.out.println();
             }
-            System.out.println();
-        }
+
         scanner.close();
     }
+
 }
